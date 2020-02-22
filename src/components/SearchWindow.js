@@ -5,7 +5,8 @@ export default function SearchWindow({
   searchQuery,
   setQuery,
   query,
-  classes
+  classes,
+  onKeyPress
 }) {
   return (
     <div className="field has-addons">
@@ -16,10 +17,14 @@ export default function SearchWindow({
           value={query}
           placeholder="Enter keywords..."
           onChange={e => setQuery(e.target.value)}
+          onKeyPress={onKeyPress}
         />
       </p>
       <p className="control">
-        <button className={classes.join(' ')} onClick={() => searchQuery(query)}>
+        <button
+          className={classes.join(" ")}
+          onClick={() => searchQuery(query)}
+        >
           Search
         </button>
       </p>
@@ -30,5 +35,7 @@ export default function SearchWindow({
 SearchWindow.propTypes = {
   searchQuery: PropTypes.func.isRequired,
   setQuery: PropTypes.func.isRequired,
-  query: PropTypes.string
+  onKeyPress: PropTypes.func.isRequired,
+  query: PropTypes.string,
+  classes: PropTypes.array
 };

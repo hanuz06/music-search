@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ArtistList from "./components/ArtistList";
 import SongList from "./components/SongList";
 import SearchWindow from "./components/SearchWindow";
 import { favArtist, favSong } from "./helpers/helperFunctions";
 import axios from "axios";
-
-// const { favSong, favArtists } = helperFunctions;
 
 function App() {
   const [songs, setSongs] = useState([]);
@@ -30,6 +28,12 @@ function App() {
   if (isLoading) {
     classes.push("is-loading");
   }
+
+  const handleKeyPress = event => {
+    if (event.key === "Enter") {
+      searchQuery(query);
+    }
+  };
 
   const searchQuery = query => {
     const BASE_URL =
@@ -76,8 +80,6 @@ function App() {
 
         setArtists(artistsArray);
         setSongs(songsArray);
-        // console.log("artistsArray", artistsArray);
-        //  console.log("Songs", songsArray);
       })
       .catch(e => {
         console.log(e.message);
@@ -102,12 +104,13 @@ function App() {
             setQuery={setQuery}
             query={query}
             classes={classes}
+            onKeyPress={handleKeyPress}
           />
         </div>
 
         <div className="block">
           <div className="columns is-desktop">
-            <div className="column is-7">
+            <div className="column is-narrow">
               <p
                 className="has-text-left is-size-5"
                 style={{ marginBottom: "10px" }}
@@ -116,7 +119,7 @@ function App() {
               </p>
               {songs ? <SongList songs={songs} favSong={favSong} /> : ""}
             </div>
-            <div className="column is-4">
+            <div className="column">
               <p
                 className="has-text-left is-size-5"
                 style={{ marginBottom: "10px" }}
