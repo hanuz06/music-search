@@ -1,10 +1,15 @@
 .App {
   text-align: center;
+  padding: 25px;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.i-con-yellow {
+  color: #FF4500;
 }
 
 @media (prefers-reduced-motion: no-preference) {
