@@ -21,7 +21,7 @@ export default function ArtistItem({
   return (
     <div
       className="level"
-      style={{ marginBottom: "5px" }}
+      style={{ marginBottom: "5px", cursor: "default" }}
       onClick={selectFavArtist}
     >
       <div className="is-pulled-left">

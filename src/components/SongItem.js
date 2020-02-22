@@ -23,7 +23,7 @@ export default function SongItem({
   return (
     <div
       className="level"
-      style={{ marginBottom: "5px" }}
+      style={{ marginBottom: "5px", cursor: "default" }}
       onClick={selectFavSong}
     >
       <div className="is-pulled-left">
@@ -48,7 +48,7 @@ SongItem.propTypes = {
   songName: PropTypes.string,
   artist: PropTypes.string,
   favSong: PropTypes.func.isRequired,
-  isSongFavorite: PropTypes.bool,
+  isSongFavorite: PropTypes.bool
 };
 
 SongItem.defaultProps = {

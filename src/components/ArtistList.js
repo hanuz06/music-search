@@ -16,5 +16,5 @@ export default function ArtistList({ artists, favArtist }) {
 
 ArtistList.propTypes = {
   artists: PropTypes.array,
-  favArtist: PropTypes.func
+  favArtist: PropTypes.func.isRequired
 };

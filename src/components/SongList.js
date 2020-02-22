@@ -17,5 +17,5 @@ export default function SongList({ songs, favSong }) {
 
 SongList.propTypes = {
   songs: PropTypes.array,
-  favSong: PropTypes.func
+  favSong: PropTypes.func.isRequired
 };
