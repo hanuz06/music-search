@@ -30,5 +30,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://6jgvj675p5.execute-api.us-west-2.amazonaws.com"
 }
