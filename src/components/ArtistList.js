@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ArtistItem from "./ArtistItem";
 
 export default function ArtistList({ artists }) {
-  return <ArtistItem />;
+  return artists.map(artist => <ArtistItem artist={artist} />);
 }
 
 ArtistList.propTypes = {};

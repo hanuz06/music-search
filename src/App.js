@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import ArtistList from "./components/ArtistList";
+import SearchWindow from "./components/SearchWindow";
 
 function App() {
   const [songs, setSongs] = useState([]);
@@ -37,10 +38,9 @@ function App() {
 
         setArtists(artistsArray);
         setSongs(songsArray);
-        console.log("Artists", artistsArray);
-        console.log("Songs", songsArray);
+        // console.log("artistsArray", artistsArray);
+        // console.log("Songs", songsArray);
       })
-
       .catch(() =>
         console.log(
           "Can’t access " + FETCH_URL + " response. Blocked by browser?"
@@ -58,36 +58,31 @@ function App() {
           >
             Music Search
           </h1>
-
-          <div className="field has-addons">
-            <p className="control">
-              <input
-                type="text"
-                className="input is-small"
-                placeholder="Enter keywords..."
-                onChange={e => setQuery(e.target.value)}
-              />
-            </p>
-            <p className="control">
-              <button
-                className="button is-small is-info"
-                onClick={() => searchQuery(query)}
-              >
-                Search
-              </button>
-            </p>
-          </div>
+          <SearchWindow
+            searchQuery={searchQuery}
+            setQuery={setQuery}
+            query={query}
+          />
         </div>
-        <div>{query}</div>
 
         <div className="block">
           <div className="columns">
             <div className="column is-6">
-              <p className="level-left notification">Songs</p>
-              {/* <ArtistList artists={artists} /> */}
+              <p
+                className="level-left is-size-5"
+                style={{ marginBottom: "10px" }}
+              >
+                Songs
+              </p>
             </div>
             <div className="column is-4">
-              <p className="level-left notification">Artists</p>
+              <p
+                className="level-left is-size-5"
+                style={{ marginBottom: "10px" }}
+              >
+                Artists
+              </p>
+              {artists ? <ArtistList artists={artists} /> : ""}
             </div>
           </div>
         </div>
