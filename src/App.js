@@ -36,57 +36,59 @@ function App() {
   };
 
   const searchQuery = query => {
-    const BASE_URL =
-      "https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production?";
-    let FETCH_URL = `${BASE_URL}q=${query}`;
+    if (query) {
+      const BASE_URL =
+        "https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production?";
+      let FETCH_URL = `${BASE_URL}q=${query}`;
 
-    setIsLoading(true);
-    axios
-      .get(FETCH_URL)
-      .then(
-        response => (
-          setQuery(""),
-          localStorage.removeItem("favSongs"),
-          localStorage.removeItem("favArtists"),
-          setIsLoading(false),
-          response.data
+      setIsLoading(true);
+      axios
+        .get(FETCH_URL)
+        .then(
+          response => (
+            setQuery(""),
+            localStorage.removeItem("favSongs"),
+            localStorage.removeItem("favArtists"),
+            setIsLoading(false),
+            response.data
+          )
         )
-      )
-      .then(json => {
-        const artistsList = json.artists.items;
-        const artistsArray = [];
+        .then(json => {
+          const artistsList = json.artists.items;
+          const artistsArray = [];
 
-        artistsList.forEach(artist => {
-          const artistInfo = {
-            id: artist.id,
-            name: artist.name,
-            isArtistFavorite: false
-          };
-          artistsArray.push(artistInfo);
+          artistsList.forEach(artist => {
+            const artistInfo = {
+              id: artist.id,
+              name: artist.name,
+              isArtistFavorite: false
+            };
+            artistsArray.push(artistInfo);
+          });
+
+          const songsList = json.tracks.items;
+          const songsArray = [];
+
+          songsList.forEach(song => {
+            const songAndArtist = {
+              id: song.id,
+              songName: song.name,
+              artist: song.artists[0].name,
+              isSongFavorite: false
+            };
+            songsArray.push(songAndArtist);
+          });
+
+          setArtists(artistsArray);
+          setSongs(songsArray);
+        })
+        .catch(e => {
+          console.log(e.message);
+          console.log(
+            "Can’t access " + FETCH_URL + " response. Blocked by browser?"
+          );
         });
-
-        const songsList = json.tracks.items;
-        const songsArray = [];
-
-        songsList.forEach(song => {
-          const songAndArtist = {
-            id: song.id,
-            songName: song.name,
-            artist: song.artists[0].name,
-            isSongFavorite: false
-          };
-          songsArray.push(songAndArtist);
-        });
-
-        setArtists(artistsArray);
-        setSongs(songsArray);
-      })
-      .catch(e => {
-        console.log(e.message);
-        console.log(
-          "Can’t access " + FETCH_URL + " response. Blocked by browser?"
-        );
-      });
+    }
   };
 
   return (
