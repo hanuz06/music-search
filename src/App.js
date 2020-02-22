@@ -1,28 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import ArtistList from "./components/ArtistList";
+import SongList from "./components/SongList";
 import SearchWindow from "./components/SearchWindow";
+import axios from "axios";
 
 function App() {
   const [songs, setSongs] = useState([]);
   const [artists, setArtists] = useState([]);
-  const [spinner, setSpinner] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
+  const classes = ["button", "is-small", "is-info"];
+
+  if (isLoading) {
+    classes.push("is-loading");
+  }
 
   const searchQuery = query => {
     const BASE_URL =
       "https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production?";
     let FETCH_URL = `${BASE_URL}q=${query}`;
-    fetch(FETCH_URL, {
-      method: "GET"
-    })
-      .then(response => response.json())
+
+    setIsLoading(true);
+    axios
+      .get(FETCH_URL)
+      .then(response => (setQuery(""),setIsLoading(false),  response.data))
       .then(json => {
         const artistsList = json.artists.items;
         const artistsArray = [];
 
         artistsList.forEach(artist => {
-          artistsArray.push(artist.name);
+          const artistInfo = {
+            id: artist.id,
+            name: artist.name
+          };
+          artistsArray.push(artistInfo);
         });
 
         const songsList = json.tracks.items;
@@ -30,6 +42,7 @@ function App() {
 
         songsList.forEach(song => {
           const songAndArtist = {
+            id: song.id,
             songName: song.name,
             artist: song.artists[0].name
           };
@@ -39,13 +52,14 @@ function App() {
         setArtists(artistsArray);
         setSongs(songsArray);
         // console.log("artistsArray", artistsArray);
-        // console.log("Songs", songsArray);
+        //  console.log("Songs", songsArray);
       })
-      .catch(() =>
+      .catch(e => {
+        console.log(e.message);
         console.log(
           "Can’t access " + FETCH_URL + " response. Blocked by browser?"
-        )
-      );
+        );
+      });
   };
 
   return (
@@ -62,22 +76,24 @@ function App() {
             searchQuery={searchQuery}
             setQuery={setQuery}
             query={query}
+            classes={classes}
           />
         </div>
 
         <div className="block">
           <div className="columns">
-            <div className="column is-6">
+            <div className="column is-7">
               <p
-                className="level-left is-size-5"
+                className="has-text-left is-size-5"
                 style={{ marginBottom: "10px" }}
               >
                 Songs
               </p>
+              {songs ? <SongList songs={songs} /> : ""}
             </div>
             <div className="column is-4">
               <p
-                className="level-left is-size-5"
+                className="has-text-left is-size-5"
                 style={{ marginBottom: "10px" }}
               >
                 Artists

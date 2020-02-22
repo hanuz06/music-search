@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-export default function ArtistItem({ artistName }) {
+export default function SongItem({ songName, artistName }) {
   //   <div className="block">
   //   <span className="icon">
   //     <i className="fa fa-star" aria-hidden="true"></i>
@@ -14,6 +14,7 @@ export default function ArtistItem({ artistName }) {
   return (
     <div className="level" style={{ marginBottom: "5px" }}>
       <div className="is-pulled-left">
+        <span>{songName}</span>-
         <span>{artistName}</span>
         <span className="icon">
           <i className="fa fa-star" aria-hidden="true"></i>
@@ -23,10 +24,11 @@ export default function ArtistItem({ artistName }) {
   );
 }
 
-ArtistItem.propTypes = {
+SongItem.propTypes = {
+  songName: PropTypes.string,
   artistName: PropTypes.string,
 };
 
-ArtistItem.defaultProps = {
+SongItem.defaultProps = {
   artistName: ["No artist names"]
 };
