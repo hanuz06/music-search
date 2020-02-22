@@ -7,7 +7,7 @@ export default function ArtistList({ artists, favArtist }) {
     <ArtistItem
       key={artist.id}
       id={artist.id}
-      artistName={artist.name}
+      artistName={artist.artistName}
       isArtistFavorite={artist.isArtistFavorite}
       favArtist={favArtist}
     />

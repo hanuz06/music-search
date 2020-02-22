@@ -31,7 +31,7 @@ export default function SongItem({
         <span>{artist}</span>
         {isSongFavorite || isFavorite ? (
           <span className="icon">
-            <i className="fa fa-star-o i-con-yellow" aria-hidden="true"></i>
+            <i className="fa fa-star-o icon-orange" aria-hidden="true"></i>
           </span>
         ) : (
           <span className="icon">

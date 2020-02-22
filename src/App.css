@@ -8,8 +8,8 @@
   pointer-events: none;
 }
 
-.i-con-yellow {
-  color: #FF4500;
+.icon-orange {
+  color: #ff4500;
 }
 
 @media (prefers-reduced-motion: no-preference) {

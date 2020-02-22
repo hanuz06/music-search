@@ -13,7 +13,7 @@ export default function ArtistItem({
     setIsFavorite(true);
     favArtist({
       id,
-      name: artistName,
+      artistName,
       isArtistFavorite: true
     });
   };
@@ -28,7 +28,7 @@ export default function ArtistItem({
         <span>{artistName}</span>
         {isArtistFavorite || isFavorite ? (
           <span className="icon">
-            <i className="fa fa-star-o i-con-yellow" aria-hidden="true"></i>
+            <i className="fa fa-star-o icon-orange" aria-hidden="true"></i>
           </span>
         ) : (
           <span className="icon">

@@ -29,8 +29,8 @@ function App() {
     classes.push("is-loading");
   }
 
-  const handleKeyPress = event => {
-    if (event.key === "Enter") {
+  const handleKeyPress = e => {
+    if (e.key === "Enter") {
       searchQuery(query);
     }
   };
@@ -60,7 +60,7 @@ function App() {
           artistsList.forEach(artist => {
             const artistInfo = {
               id: artist.id,
-              name: artist.name,
+              artistName: artist.name,
               isArtistFavorite: false
             };
             artistsArray.push(artistInfo);
