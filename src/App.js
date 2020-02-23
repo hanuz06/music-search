@@ -66,6 +66,8 @@ function App() {
             artistsArray.push(artistInfo);
           });
 
+          setArtists(artistsArray);
+
           const songsList = json.tracks.items;
           const songsArray = [];
 
@@ -79,7 +81,6 @@ function App() {
             songsArray.push(songAndArtist);
           });
 
-          setArtists(artistsArray);
           setSongs(songsArray);
         })
         .catch(e => {
@@ -94,11 +95,8 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="block">
-          <h1
-            className="level level-left title is-4"
-            style={{ marginBottom: "10px", marginTop: "20px" }}
-          >
+        <section className="block">
+          <h1 className=" has-text-left title is-4 headline-style">
             Music Search
           </h1>
           <SearchWindow
@@ -108,34 +106,26 @@ function App() {
             classes={classes}
             onKeyPress={handleKeyPress}
           />
-        </div>
+        </section>
 
-        <div className="block">
-          <div className="columns is-desktop">
+        <section className="block">
+          <div className="columns is-desktop is-centered">
             <div className="column is-narrow">
-              <p
-                className="has-text-left is-size-5"
-                style={{ marginBottom: "10px" }}
-              >
+              <p className="has-text-left is-size-5 column-margin-bottom">
                 Songs
               </p>
-              {songs ? <SongList songs={songs} favSong={favSong} /> : ""}
+              {songs && <SongList songs={songs} favSong={favSong} />}
             </div>
             <div className="column">
-              <p
-                className="has-text-left is-size-5"
-                style={{ marginBottom: "10px" }}
-              >
+              <p className="has-text-left is-size-5 column-margin-bottom">
                 Artists
               </p>
-              {artists ? (
+              {artists && (
                 <ArtistList artists={artists} favArtist={favArtist} />
-              ) : (
-                ""
               )}
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

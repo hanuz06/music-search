@@ -8,8 +8,21 @@
   pointer-events: none;
 }
 
+.headline-style {
+  margin-top: 20px;
+}
+
 .icon-orange {
   color: #ff4500;
+}
+
+.list-items-style {
+  margin-bottom: 5px;
+  cursor: default;
+}
+
+.column-margin-bottom {
+  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

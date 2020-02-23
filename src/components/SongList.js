@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SongItem from "./SongItem";
 
 export default function SongList({ songs, favSong }) {
+  
   return songs.map(song => (
     <SongItem
       key={song.id}

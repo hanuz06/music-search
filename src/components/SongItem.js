@@ -21,24 +21,18 @@ export default function SongItem({
   };
 
   return (
-    <div
-      className="level"
-      style={{ marginBottom: "5px", cursor: "default" }}
-      onClick={selectFavSong}
-    >
-      <div className="is-pulled-left">
-        <span>{songName}</span> &nbsp;&#8722;&nbsp;
-        <span>{artist}</span>
-        {isSongFavorite || isFavorite ? (
-          <span className="icon">
-            <i className="fa fa-star-o icon-orange" aria-hidden="true"></i>
-          </span>
-        ) : (
-          <span className="icon">
-            <i className="fa fa-star" aria-hidden="true"></i>
-          </span>
-        )}
-      </div>
+    <div className="has-text-left list-items-style" onClick={selectFavSong}>
+      <span>{songName}</span> &nbsp;&#8722;&nbsp;
+      <span>{artist}</span>
+      {isSongFavorite || isFavorite ? (
+        <span className="icon">
+          <i className="fa fa-star-o icon-orange" aria-hidden="true"></i>
+        </span>
+      ) : (
+        <span className="icon">
+          <i className="fa fa-star" aria-hidden="true"></i>
+        </span>
+      )}
     </div>
   );
 }

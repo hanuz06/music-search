@@ -19,23 +19,17 @@ export default function ArtistItem({
   };
 
   return (
-    <div
-      className="level"
-      style={{ marginBottom: "5px", cursor: "default" }}
-      onClick={selectFavArtist}
-    >
-      <div className="is-pulled-left">
-        <span>{artistName}</span>
-        {isArtistFavorite || isFavorite ? (
-          <span className="icon">
-            <i className="fa fa-star-o icon-orange" aria-hidden="true"></i>
-          </span>
-        ) : (
-          <span className="icon">
-            <i className="fa fa-star" aria-hidden="true"></i>
-          </span>
-        )}
-      </div>
+    <div className="has-text-left list-items-style" onClick={selectFavArtist}>
+      <span>{artistName}</span>
+      {isArtistFavorite || isFavorite ? (
+        <span className="icon">
+          <i className="fa fa-star-o icon-orange" aria-hidden="true"></i>
+        </span>
+      ) : (
+        <span className="icon">
+          <i className="fa fa-star" aria-hidden="true"></i>
+        </span>
+      )}
     </div>
   );
 }
