@@ -95,7 +95,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <section className="block">
+        <header className="block">
           <h1 className=" has-text-left title is-4 headline-style">
             Music Search
           </h1>
@@ -106,26 +106,26 @@ function App() {
             classes={classes}
             onKeyPress={handleKeyPress}
           />
-        </section>
+        </header>
 
-        <section className="block">
+        <main className="block">
           <div className="columns is-desktop is-centered">
-            <div className="column is-narrow">
+            <section className="column is-narrow">
               <p className="has-text-left is-size-5 column-margin-bottom">
                 Songs
               </p>
               {songs && <SongList songs={songs} favSong={favSong} />}
-            </div>
-            <div className="column">
+            </section>
+            <section className="column">
               <p className="has-text-left is-size-5 column-margin-bottom">
                 Artists
               </p>
               {artists && (
                 <ArtistList artists={artists} favArtist={favArtist} />
               )}
-            </div>
+            </section>
           </div>
-        </section>
+        </main>
       </div>
     </div>
   );
