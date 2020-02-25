@@ -4,6 +4,7 @@ This is a mini project executed according a code test.
 It was deployed to AWS and netlify:
 
 👉 [Music search/AWS](https://d1fl43rrcxluvg.cloudfront.net/)
+
 👉 [Music search/Netlify](https://hanuz06-music-search.netlify.com/)
 
 Requirements:
@@ -11,8 +12,8 @@ Requirements:
 1. Page should contain an input box for searching by string
 2. Page should contain a button to submit the search
 3. Page should make API call to
-   https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production
-   a. GET request
+   https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production   
+   a. GET request\
    b. Query parameter ‘q’ is the search string
 4. API search results should be categorized by Song and Artist
 5. API results should be displayed on page in two separate lists
@@ -40,7 +41,7 @@ npm start
 
 !["Screenshot of selected favorites"](https://github.com/hanuz06/music-search/blob/master/public/images/react-ci-aws.png?raw=true)
 
-### Found songs and artists. Selected favorited and noted with changed star color to orange
+### Found songs and artists. Selected favorites are noted with changed star color to orange
 
 !["Screenshot of selected favorites"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-1.png?raw=true)
 
