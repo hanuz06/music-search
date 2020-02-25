@@ -39,9 +39,9 @@ npm start
 
 ### App deployment schema to AWS
 
-!["Screenshot of selected favorites"](https://github.com/hanuz06/music-search/blob/master/public/images/react-ci-aws.png?raw=true)
+!["Screenshot of app deployment"](https://github.com/hanuz06/music-search/blob/master/public/images/react-ci-aws.png?raw=true)
 
-### Found songs and artists. Selected favorites are noted with changed star color to orange
+### Display of found songs and artists. Selected favorites are noted with orange stars
 
 !["Screenshot of selected favorites"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-1.png?raw=true)
 
