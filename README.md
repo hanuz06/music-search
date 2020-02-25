@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This app has also been deployed to AWS with CI pipeline:
+https://music-search-deploybucket-73wua8iardo3.s3.us-east-2.amazonaws.com/index.html
+
+Building a continuous integration pipeline for a create-react-app starter app using AWS.
+
 ## Available Scripts
 
 In the project directory, you can run:
