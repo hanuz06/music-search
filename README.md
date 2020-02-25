@@ -1,73 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Music search
 
-This app has also been deployed to AWS with CI pipeline:
-https://music-search-deploybucket-73wua8iardo3.s3.us-east-2.amazonaws.com/index.html
+This is a mini project executed according a code test.
+It was deployed to AWS and netlify:
 
-Building a continuous integration pipeline for a create-react-app starter app using AWS.
+👉 [Music search/AWS](https://d1fl43rrcxluvg.cloudfront.net/)
+👉 [Music search/Netlify](https://hanuz06-music-search.netlify.com/)
 
-## Available Scripts
+Requirements:
 
-In the project directory, you can run:
+1. Page should contain an input box for searching by string
+2. Page should contain a button to submit the search
+3. Page should make API call to
+   https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production
+   a. GET request
+   b. Query parameter ‘q’ is the search string
+4. API search results should be categorized by Song and Artist
+5. API results should be displayed on page in two separate lists
+6. User should be able to select favorite songs or artists
+7. Favorites should be persisted in a​ local storage
+8. On page refresh my favorites should be displayed
+9. Search button should show loader/spinner while request is completed
+10. Favorite songs or artists should be indicated by colored icon
 
-### `yarn start`
+# Downloading the project
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Fork and clone this repo
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Running the project localy
 
-### `yarn test`
+```sh
+cd music-search
+npm install
+npm start
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
 
-### `yarn build`
+### App deployment schema to AWS
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+!["Screenshot of selected favorites"](https://github.com/hanuz06/music-search/blob/master/public/images/react-ci-aws.png?raw=true)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Found songs and artists. Selected favorited and noted with changed star color to orange
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+!["Screenshot of selected favorites"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-1.png?raw=true)
 
-### `yarn eject`
+### Display of selected favorites after page refresh
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+!["Screenshot of selected favorites display after page refresh"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-2.png?raw=true)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Search button showing loader/spinner while request is completed
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+!["Search button showing loader/spinner while request is completed"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-3.png?raw=true)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Node 12.x or above
+- NPM 5.x or above
+- Axios
+- Bulma
