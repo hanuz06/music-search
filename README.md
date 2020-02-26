@@ -1,6 +1,6 @@
 # Music search
 
-This is a mini project executed according a code test.
+This is a mini project executed according a coding test.
 It was deployed to AWS and netlify:
 
 👉 [Music search/AWS](https://d1fl43rrcxluvg.cloudfront.net/)
