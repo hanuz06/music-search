@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.headline-style {
+  margin-top: 20px;
+}
+
+.icon-orange {
+  color: #ff4500;
+}
+
+.list-items-style {
+  margin-bottom: 5px;
+  cursor: default;
+}
+
+.column-margin-bottom {
+  margin-bottom: 20px;
+}
+

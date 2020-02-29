@@ -12,7 +12,7 @@ Requirements:
 1. Page should contain an input box for searching by string
 2. Page should contain a button to submit the search
 3. Page should make API call to
-   https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production   
+   https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production  
    a. GET request\
    b. Query parameter ‘q’ is the search string
 4. API search results should be categorized by Song and Artist
@@ -53,10 +53,11 @@ npm start
 
 !["Search button showing loader/spinner while request is completed"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-3.png?raw=true)
 
-
 ## Dependencies
 
 - Node 12.x or above
 - NPM 5.x or above
+- react 16.9.0
+- react-dom 16.9.0
 - Axios
 - Bulma
