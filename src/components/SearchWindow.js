@@ -7,7 +7,7 @@ export default function SearchWindow({
   query,
   classes,
   onKeyPress
-}) {
+}) {  
   return (
     <div className="field has-addons">
       <p className="control">

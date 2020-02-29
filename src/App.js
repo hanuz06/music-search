@@ -1,33 +1,40 @@
-import React, { useState } from "react";
-import "./App.css";
+import React from "react";
 import ArtistList from "./components/ArtistList";
 import SongList from "./components/SongList";
 import SearchWindow from "./components/SearchWindow";
 import { favArtist, favSong } from "./helpers/helperFunctions";
+import {
+  SET_QUERY,
+  SET_ARTISTS_LIST,
+  SET_SONGS_LIST,
+  IS_LOADING,
+  IS_NOT_LOADING
+} from "./types";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const [songs, setSongs] = useState([]);
-  const [artists, setArtists] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState("");
+  const { songs, artists, query, isLoading } = useSelector(state => state);
+  const dispatch = useDispatch();
+
   const classes = ["button", "is-small", "is-info"];
-
-  let isFavSongsExist = JSON.parse(localStorage.getItem("favSongs"));
-  let isFavArtistsExist = JSON.parse(localStorage.getItem("favArtists"));
-  window.onload = () => {
-    if (isFavSongsExist) {
-      setSongs(isFavSongsExist);
-    }
-
-    if (isFavArtistsExist) {
-      setArtists(isFavArtistsExist);
-    }
-  };
 
   if (isLoading) {
     classes.push("is-loading");
   }
+
+  let isFavSongsExist = JSON.parse(localStorage.getItem("favSongs"));
+  let isFavArtistsExist = JSON.parse(localStorage.getItem("favArtists"));
+
+  window.onload = () => {
+    isFavSongsExist &&
+      dispatch({ type: SET_SONGS_LIST, payload: isFavSongsExist });
+
+    isFavArtistsExist &&
+      dispatch({ type: SET_ARTISTS_LIST, payload: isFavArtistsExist });
+  };
+
+  const setQuery = query => dispatch({ type: SET_QUERY, payload: query });
 
   const handleKeyPress = e => {
     if (e.key === "Enter") {
@@ -37,19 +44,19 @@ function App() {
 
   const searchQuery = query => {
     if (query) {
+      dispatch({ type: IS_LOADING });
       const BASE_URL =
         "https://6jgvj675p5.execute-api.us-west-2.amazonaws.com/production?";
       let FETCH_URL = `${BASE_URL}q=${query}`;
 
-      setIsLoading(true);
       axios
         .get(FETCH_URL)
         .then(
           response => (
-            setQuery(""),
+            dispatch({ type: SET_QUERY, payload: query }),
             localStorage.removeItem("favSongs"),
             localStorage.removeItem("favArtists"),
-            setIsLoading(false),
+            dispatch({ type: IS_NOT_LOADING }),
             response.data
           )
         )
@@ -66,7 +73,7 @@ function App() {
             artistsArray.push(artistInfo);
           });
 
-          setArtists(artistsArray);
+          dispatch({ type: SET_ARTISTS_LIST, payload: artistsArray });
 
           const songsList = json.tracks.items;
           const songsArray = [];
@@ -81,7 +88,7 @@ function App() {
             songsArray.push(songAndArtist);
           });
 
-          setSongs(songsArray);
+          dispatch({ type: SET_SONGS_LIST, payload: songsArray });
         })
         .catch(e => {
           console.log(e.message);
