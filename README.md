@@ -1,7 +1,6 @@
 # Music search
 
 This is a mini project executed according to a coding test.
-It has been deployed to AWS and Netlify:
 
 👉 [Music search/AWS](https://d1fl43rrcxluvg.cloudfront.net/)
 
@@ -59,5 +58,7 @@ npm start
 - NPM 5.x or above
 - react 16.9.0
 - react-dom 16.9.0
+- redux ^4.0.5
+- react-redux ^7.2.0
 - Axios
 - Bulma
