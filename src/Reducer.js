@@ -1,11 +1,9 @@
 import {
-  SET_QUERY,
   SET_ARTISTS_LIST,
   SET_SONGS_LIST,
   IS_LOADING,
   IS_NOT_LOADING
 } from "./types";
-
 
 // State structure:
 // const state = {
@@ -24,14 +22,11 @@ import {
 //       isArtistFavorite: false
 //     }
 //   ],
-//   query: "",
 //   isLoading: false
 // };
 
 function reducer(state = {}, action) {
   switch (action.type) {
-    case SET_QUERY:
-      return { ...state, query: action.payload };
     case SET_ARTISTS_LIST:
       return { ...state, artists: [...action.payload] };
     case SET_SONGS_LIST:

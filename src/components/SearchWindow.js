@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-export default function SearchWindow({
-  searchQuery,
-  setQuery,
-  query,
-  classes,
-  onKeyPress
-}) {  
+export default function SearchWindow({ searchQuery, classes }) {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleKeyPress = e => {
+    if (e.key === "Enter") {
+      searchQuery(inputValue);
+      setInputValue("");
+    }
+  };
+
   return (
     <div className="field has-addons">
       <p className="control">
         <input
           type="text"
           className="input is-small"
-          value={query}
+          value={inputValue}
           placeholder="Enter keywords..."
-          onChange={e => setQuery(e.target.value)}
-          onKeyPress={onKeyPress}
+          onChange={e => {
+            setInputValue(e.target.value);
+          }}
+          onKeyPress={handleKeyPress}
         />
       </p>
       <p className="control">
         <button
           className={classes.join(" ")}
-          onClick={() => searchQuery(query)}
+          onClick={() => {
+            searchQuery(inputValue);
+            setInputValue("");
+          }}
         >
           Search
         </button>
@@ -34,8 +42,9 @@ export default function SearchWindow({
 
 SearchWindow.propTypes = {
   searchQuery: PropTypes.func.isRequired,
-  setQuery: PropTypes.func.isRequired,
-  onKeyPress: PropTypes.func.isRequired,
-  query: PropTypes.string,
   classes: PropTypes.array
+};
+
+SearchWindow.defaultProps = {
+  value: ""
 };

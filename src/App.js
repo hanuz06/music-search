@@ -4,7 +4,6 @@ import SongList from "./components/SongList";
 import SearchWindow from "./components/SearchWindow";
 import { favArtist, favSong } from "./helpers/helperFunctions";
 import {
-  SET_QUERY,
   SET_ARTISTS_LIST,
   SET_SONGS_LIST,
   IS_LOADING,
@@ -14,7 +13,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const { songs, artists, query, isLoading } = useSelector(state => state);
+  const { songs, artists, isLoading } = useSelector(state => state);
   const dispatch = useDispatch();
 
   const classes = ["button", "is-small", "is-info"];
@@ -34,14 +33,6 @@ function App() {
       dispatch({ type: SET_ARTISTS_LIST, payload: isFavArtistsExist });
   };
 
-  const setQuery = query => dispatch({ type: SET_QUERY, payload: query });
-
-  const handleKeyPress = e => {
-    if (e.key === "Enter") {
-      searchQuery(query);
-    }
-  };
-
   const searchQuery = query => {
     if (query) {
       dispatch({ type: IS_LOADING });
@@ -53,7 +44,6 @@ function App() {
         .get(FETCH_URL)
         .then(
           response => (
-            dispatch({ type: SET_QUERY, payload: query }),
             localStorage.removeItem("favSongs"),
             localStorage.removeItem("favArtists"),
             dispatch({ type: IS_NOT_LOADING }),
@@ -106,13 +96,7 @@ function App() {
           <h1 className=" has-text-left title is-4 headline-style">
             Music Search
           </h1>
-          <SearchWindow
-            searchQuery={searchQuery}
-            setQuery={setQuery}
-            query={query}
-            classes={classes}
-            onKeyPress={handleKeyPress}
-          />
+          <SearchWindow searchQuery={searchQuery} classes={classes} />
         </header>
 
         <main className="block">
