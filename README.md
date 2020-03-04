@@ -42,7 +42,7 @@ npm start
 
 ### Display of found songs and artists. Selected favorites are noted with orange stars
 
-!["Screenshot of selected favorites"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-1.png?raw=true)
+!["Screenshot of selected favorite songs and/or artists"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-1.png?raw=true)
 
 ### Display of selected favorites after page refresh
 
