@@ -1,7 +1,6 @@
 import React from "react";
-import ArtistList from "./components/ArtistList";
-import SongList from "./components/SongList";
-import SearchWindow from "./components/SearchWindow";
+import Header from "./components/Header";
+import Main from "./components/Main";
 import { favArtist, favSong } from "./helpers/helperFunctions";
 import {
   SET_ARTISTS_LIST,
@@ -42,15 +41,10 @@ function App() {
 
       axios
         .get(FETCH_URL)
-        .then(
-          response => (
-            localStorage.removeItem("favSongs"),
-            localStorage.removeItem("favArtists"),
-            dispatch({ type: IS_NOT_LOADING }),
-            response.data
-          )
-        )
-        .then(json => {
+        .then(response => {
+          localStorage.clear();
+          dispatch({ type: IS_NOT_LOADING });
+          let json = response.data;
           const artistsList = json.artists.items;
           const artistsArray = [];
 
@@ -92,31 +86,13 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <header className="block">
-          <h1 className=" has-text-left title is-4 headline-style">
-            Music Search
-          </h1>
-          <SearchWindow searchQuery={searchQuery} classes={classes} />
-        </header>
-
-        <main className="block">
-          <div className="columns is-desktop is-centered">
-            <section className="column is-narrow">
-              <p className="has-text-left is-size-5 column-margin-bottom">
-                Songs
-              </p>
-              {songs && <SongList songs={songs} favSong={favSong} />}
-            </section>
-            <section className="column">
-              <p className="has-text-left is-size-5 column-margin-bottom">
-                Artists
-              </p>
-              {artists && (
-                <ArtistList artists={artists} favArtist={favArtist} />
-              )}
-            </section>
-          </div>
-        </main>
+        <Header searchQuery={searchQuery} classes={classes} />
+        <Main
+          songs={songs}
+          favSong={favSong}
+          artists={artists}
+          favArtist={favArtist}
+        />
       </div>
     </div>
   );
