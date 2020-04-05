@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  sample-prod:
+    container_name: music-search
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    ports:
+      - '81:80'

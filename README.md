@@ -22,16 +22,35 @@ Requirements:
 9. Search button should show loader/spinner while request is completed
 10. Favorite songs or artists should be indicated by colored icon
 
-# Downloading the project
+## Downloading the project
 
 Fork and clone this repo
 
-# Running the project localy
+## Running the project locally 
 
 ```sh
 cd music-search
 npm install
 npm start
+```
+
+## Running the production version locally in Docker container
+
+### Fire up the container:
+
+```sh
+docker-compose -f docker-compose-prod.yml up -d --build
+```
+### In browser go to this address:
+
+```sh
+http://localhost:81/
+```
+
+### To bring down the container:
+
+```sh
+docker-compose stop
 ```
 
 ## Screenshots
@@ -62,3 +81,5 @@ npm start
 - react-redux ^7.2.0
 - Axios
 - Bulma
+- Google Tag Manager
+- Docker
