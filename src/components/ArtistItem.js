@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import ArtistItemDisplay from "./ArtistItemDisplay";
 
 export default function ArtistItem({
   id,
@@ -19,18 +20,12 @@ export default function ArtistItem({
   };
 
   return (
-    <div className="has-text-left list-items-style" onClick={selectFavArtist}>
-      <span>{artistName}</span>
-      {isArtistFavorite || isFavorite ? (
-        <span className="icon">
-          <i className="fa fa-star-o icon-orange" aria-hidden="true"></i>
-        </span>
-      ) : (
-        <span className="icon">
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </span>
-      )}
-    </div>
+    <ArtistItemDisplay
+      selectFavArtist={selectFavArtist}
+      artistName={artistName}
+      isArtistFavorite={isArtistFavorite}
+      isFavorite={isFavorite}
+    />
   );
 }
 
