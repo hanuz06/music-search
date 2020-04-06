@@ -71,6 +71,14 @@ docker-compose stop
 
 !["Search button showing loader/spinner while request is completed"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-3.png?raw=true)
 
+### Google Tag Manager
+
+!["Google Tag Manager"](https://github.com/hanuz06/music-search/blob/master/public/images/ga-1.png?raw=true)
+
+### Google Analytics
+
+!["Google Analytics"](https://github.com/hanuz06/music-search/blob/master/public/images/music-search-ga.png?raw=true)
+
 ## Dependencies
 
 - Node 12.x or above
