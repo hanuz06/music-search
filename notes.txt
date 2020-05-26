@@ -1,0 +1,17 @@
+docker build -t choose_your_image_name 
+docker run 
+    -it 
+    --rm 
+    -v ${PWD}:/app 
+    -v /app/node_modules 
+    -p 3000:3000 
+    -e CHOKIDAR_USEPOLLING=true 
+    your_image_name
+
+
+docker-compose up -d --build
+docker-compose up  // if docker-compose image is built
+docker-compose stop
+
+
+https://mherman.org/blog/dockerizing-a-react-app/

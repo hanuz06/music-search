@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  sample-prod:
+  front-side-prod:
     container_name: music-search
     build:
       context: .

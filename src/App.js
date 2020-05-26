@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import { favArtist, favSong } from "./helpers/helperFunctions";
@@ -6,13 +6,13 @@ import {
   SET_ARTISTS_LIST,
   SET_SONGS_LIST,
   IS_LOADING,
-  IS_NOT_LOADING
+  IS_NOT_LOADING,
 } from "./types";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const { songs, artists, isLoading } = useSelector(state => state);
+  const { songs, artists, isLoading } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const classes = ["button", "is-small", "is-info"];
@@ -32,7 +32,7 @@ function App() {
       dispatch({ type: SET_ARTISTS_LIST, payload: isFavArtistsExist });
   };
 
-  const searchQuery = query => {
+  const searchQuery = (query) => {
     if (query) {
       dispatch({ type: IS_LOADING });
       const BASE_URL =
@@ -41,18 +41,18 @@ function App() {
 
       axios
         .get(FETCH_URL)
-        .then(response => {
+        .then((response) => {
           localStorage.clear();
           dispatch({ type: IS_NOT_LOADING });
           let json = response.data;
           const artistsList = json.artists.items;
           const artistsArray = [];
 
-          artistsList.forEach(artist => {
+          artistsList.forEach((artist) => {
             const artistInfo = {
               id: artist.id,
               artistName: artist.name,
-              isArtistFavorite: false
+              isArtistFavorite: false,
             };
             artistsArray.push(artistInfo);
           });
@@ -62,19 +62,19 @@ function App() {
           const songsList = json.tracks.items;
           const songsArray = [];
 
-          songsList.forEach(song => {
+          songsList.forEach((song) => {
             const songAndArtist = {
               id: song.id,
               songName: song.name,
               artist: song.artists[0].name,
-              isSongFavorite: false
+              isSongFavorite: false,
             };
             songsArray.push(songAndArtist);
           });
 
           dispatch({ type: SET_SONGS_LIST, payload: songsArray });
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e.message);
           console.log(
             "Can’t access " + FETCH_URL + " response. Blocked by browser?"
